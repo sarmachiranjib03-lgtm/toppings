@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --font-syne: var(--font-syne), sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+  --font-serif: var(--font-cormorant), serif;
+  --font-italiana: var(--font-italiana), serif;
+  --font-tenor: var(--font-tenor-sans), sans-serif;
+  --color-charcoal: #2a2522;
+  --color-cream: #faf5eb;
+  --color-crimson: #e11d48;
+  --color-neon-blue: #00f0ff;
+  --color-terracotta: #b8593a;
+}
+
+:root {
+  --background: #f5efe1;
+  --foreground: #2a2522;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Hide default cursor on desktop when custom cursor is active */
+@media (pointer: fine) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f2f0ea;
+}
+::-webkit-scrollbar-thumb {
+  background: #c4c2ba;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9e9c94;
+}
+
+/* Lenis smooth scrolling integration */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Grid overlay and decorative line animations - Dark lines for white layout */
+.grid-line-h {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(13, 13, 13, 0.08);
+  transform-origin: left;
+}
+
+.grid-line-v {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(13, 13, 13, 0.08);
+  transform-origin: top;
+}
+
+/* Clip Path text reveal helpers */
+.clip-text {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Infinite Marquee Loop for Display Cards */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
